@@ -1,0 +1,141 @@
+<script>
+	import { generatePassword } from './generator.js';
+	import '~/style.css';
+
+	let length = 16;
+	let lowercase = 1;
+	let uppercase = 1;
+	let number = 1;
+	let special = 1;
+	let ambiguous = false;
+
+	let password = '';
+
+	function generate (ev) {
+		if (ev) {
+			ev.preventDefault();
+		}
+
+		password = generatePassword({
+			length: length,
+			lowercase: lowercase,
+			uppercase: uppercase,
+			number: number,
+			special: special,
+			ambiguous: ambiguous,
+		});
+	}
+
+	function copy () {
+		let textarea = document.createElement('textarea');
+		textarea.value = password;
+		document.body.appendChild(textarea);
+
+		textarea.select();
+		document.execCommand('copy');
+
+		document.body.removeChild(textarea);
+	}
+
+	generate();
+</script>
+
+<h3>random password generator</h3>
+
+<form @submit={generate}>
+	<div class='password'>
+		<input readonly value={password} />
+		<button type=button @click={copy}>copy</button>
+		<button type=submit>generate</button>
+	</div>
+
+	<hr />
+
+	<label>
+		<span>password length</span>
+		<input type='number' min='1' :value={length} />
+	</label>
+
+	<label>
+		<span>min lowercase characters</span>
+		<input type='number' min='-1' :value={lowercase} />
+	</label>
+
+	<label>
+		<span>min uppercase characters</span>
+		<input type='number' min='-1' :value={uppercase} />
+	</label>
+
+	<label>
+		<span>min number characters</span>
+		<input type='number' min='-1' :value={number} />
+	</label>
+
+	<label>
+		<span>min special characters</span>
+		<input type='number' min='-1' :value={special} />
+	</label>
+
+	<label>
+		<span>ambiguous characters</span>
+		<input type='checkbox' :checked={ambiguous} />
+	</label>
+
+	<hr>
+
+	<p>
+		<a target='_blank' href='https://github.com/intrnl/random-password-generator'>
+			github
+		</a>
+	</p>
+</form>
+
+<style>
+	h3, form, label {
+		margin-top: 0;
+		margin-bottom: 16px;
+	}
+
+	h3, form {
+		display: block;
+	}
+
+	label {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	label > span {
+		display: block;
+		margin-bottom: 4px;
+		flex-grow: 1;
+	}
+
+	input {
+		font-family: monospace;
+		padding: 8px;
+	}
+
+	.password {
+		display: flex;
+		gap: 8px;
+	}
+
+	.password input {
+		width: -moz-available;
+		width: -webkit-fill-available;
+		width: fill-available;
+	}
+
+	button {
+		padding: 8px;
+	}
+
+	hr {
+		color: transparent;
+		border: 0;
+		border-bottom: 1px solid #808080;
+		margin: 16px 0;
+	}
+</style>

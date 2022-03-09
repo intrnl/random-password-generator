@@ -1,0 +1,10 @@
+{
+	"compilerOptions": {
+		"target": "esnext",
+		"lib": ["dom", "esnext"],
+		"moduleResolution": "node",
+		"paths": {
+			"~/*": ["./src/*"]
+    }
+	}
+}
