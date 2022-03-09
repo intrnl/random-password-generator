@@ -9,8 +9,6 @@
 	let special = 1;
 	let ambiguous = false;
 
-	$: min = Math.max(0, lowercase) + Math.max(0, uppercase) + Math.max(0, number) + Math.max(0, special);
-
 	let password = '';
 
 	function generate (ev) {
@@ -55,7 +53,7 @@
 
 	<label>
 		<span>password length</span>
-		<input required type='number' min={min} :value={length} />
+		<input required type='number' min='1' :value={length} />
 	</label>
 
 	<label>

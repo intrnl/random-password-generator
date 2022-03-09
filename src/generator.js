@@ -3,9 +3,6 @@
  * @returns
  */
 export function generatePassword (options) {
-	const minimum = options.uppercase + options.lowercase + options.number + options.special;
-	const length = options.length < minimum ? minimum : options.length;
-
 	const positions = [];
 
 	for (let i = 0, l = options.lowercase; i < l; i++) {
@@ -24,7 +21,7 @@ export function generatePassword (options) {
 		positions.push('s');
 	}
 
-	for (let i = 0, l = length - Math.max(0, minimum); i < l; i++) {
+	for (let i = positions.length; i < options.length; i++) {
 		positions.push('r');
 	}
 
@@ -61,7 +58,7 @@ export function generatePassword (options) {
 
 	let password = '';
 
-	for (let idx = 0; idx < options.length; idx++) {
+	for (let idx = 0; idx < positions.length; idx++) {
 		let selectedCharset;
 
 		switch (positions[idx]) {
