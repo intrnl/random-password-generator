@@ -9,7 +9,7 @@
 	let special = 1;
 	let ambiguous = false;
 
-	$: min = Math.max(0, lowercase + uppercase + number + special);
+	$: min = Math.max(0, lowercase) + Math.max(0, uppercase) + Math.max(0, number) + Math.max(0, special);
 
 	let password = '';
 
