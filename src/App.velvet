@@ -11,6 +11,8 @@
 
 	let password = '';
 
+	let textfield;
+
 	function generate (ev) {
 		if (ev) {
 			ev.preventDefault();
@@ -27,14 +29,8 @@
 	}
 
 	function copy () {
-		let textarea = document.createElement('textarea');
-		textarea.value = password;
-		document.body.appendChild(textarea);
-
-		textarea.select();
+		textfield.select();
 		document.execCommand('copy');
-
-		document.body.removeChild(textarea);
 	}
 
 	generate();
@@ -44,7 +40,7 @@
 
 <form @submit={generate}>
 	<div class='password'>
-		<input readonly value={password} />
+		<input readonly value={password} #ref={textfield} />
 		<button type=button @click={copy}>copy</button>
 		<button type=submit>generate</button>
 	</div>
