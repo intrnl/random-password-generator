@@ -32,7 +32,7 @@ export function generatePassword (options) {
 	let lowercaseCharset = 'abcdefghijkmnopqrstuvwxyz';
 	let uppercaseCharset = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
 	let numberCharset = '23456789';
-	let specialCharset = '!@#$%^&*';
+	let specialCharset = '!@#$%^&*()_+-=.';
 
 	if (options.ambiguous) {
 		lowercaseCharset += 'l';
