@@ -79,7 +79,7 @@ export function generatePassword (options) {
 				break;
 		}
 
-		password += selectedCharset[random(0, selectedCharset.length)];
+		password += selectedCharset[randrange(0, selectedCharset.length)];
 	}
 
 	return password;
@@ -91,7 +91,7 @@ export function generatePassword (options) {
  */
 function shuffle (array) {
 	for (let i = array.length - 1; i > 0; i--) {
-		const j = random(0, i);
+		const j = randrange(0, i);
 
 		const temp = array[i];
 		array[i] = array[j];
@@ -100,41 +100,35 @@ function shuffle (array) {
 }
 
 /**
- * https://github.com/EFForg/OpenWireless/blob/master/app/js/diceware.js
+ * https://stackoverflow.com/a/41452318
  * @param {number} min
  * @param {number} max
  * @returns {number}
  */
-function random (min, max) {
+function randrange (min, max) {
 	const range = max - min;
-	let rval = 0;
+	const bytes = Math.ceil(Math.log2(range) / 8);
 
-	const bits = Math.ceil(Math.log2(range));
-
-	if (bits > 53) {
-		throw new Error('cannot generate random number larger than 53 bits');
+	if (range <= 0 || !bytes) {
+		return min;
 	}
 
-	const bytes = Math.ceil(bits / 8);
-	const mask = (2 ** bits) - 1;
+	const maxn = 256 ** bytes;
+	const buf = new Uint8Array(bytes);
 
-	const arr = new Uint8Array(bytes);
-	crypto.getRandomValues(arr);
+	while (true) {
+		crypto.getRandomValues(buf);
 
-	let p = (bytes - 1) * 8;
+		let val = 0;
 
-	for (let i = 0; i < bytes; i++) {
-		rval += arr[i] * (2 ** p);
-		p -= 8;
+		for (let idx = 0; idx < bytes; idx++) {
+			val = (val << 8) + buf[idx];
+		}
+
+		if (val < maxn - maxn % range) {
+			return min + (val % range);
+		}
 	}
-
-	rval = rval & mask;
-
-	if (rval >= range) {
-		return random(min, max);
-	}
-
-	return rval + min;
 }
 
 /**
