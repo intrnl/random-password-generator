@@ -48,32 +48,32 @@
 	<hr />
 
 	<label>
-		<span>password length</span>
+		<span>length</span>
 		<input required type='number' min='1' :value={length} />
 	</label>
 
 	<label>
-		<span>min lowercase characters</span>
+		<span>lowercase</span>
 		<input required type='number' min='-1' :value={lowercase} />
 	</label>
 
 	<label>
-		<span>min uppercase characters</span>
+		<span>uppercase</span>
 		<input required type='number' min='-1' :value={uppercase} />
 	</label>
 
 	<label>
-		<span>min number characters</span>
+		<span>number</span>
 		<input required type='number' min='-1' :value={number} />
 	</label>
 
 	<label>
-		<span>min special characters</span>
+		<span>special</span>
 		<input required type='number' min='-1' :value={special} />
 	</label>
 
 	<label>
-		<span>ambiguous characters</span>
+		<span>ambiguous</span>
 		<input type='checkbox' :checked={ambiguous} />
 	</label>
 
