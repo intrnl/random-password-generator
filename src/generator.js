@@ -1,6 +1,6 @@
 /**
  * @param {PasswordGenerationOptions} options
- * @returns
+ * @returns {string}
  */
 export function generatePassword (options) {
 	const positions = [];
