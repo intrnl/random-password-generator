@@ -125,7 +125,7 @@ function randrange (min, max) {
 			val = (val << 8) + buf[idx];
 		}
 
-		if (val < maxn - maxn % range) {
+		if (val < maxn - (maxn % range)) {
 			return min + (val % range);
 		}
 	}
