@@ -79,7 +79,7 @@ export function generatePassword (options) {
 				break;
 		}
 
-		password += selectedCharset[random(0, selectedCharset.length - 1)];
+		password += selectedCharset[random(0, selectedCharset.length)];
 	}
 
 	return password;
