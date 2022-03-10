@@ -87,6 +87,10 @@
 </form>
 
 <style>
+	*, *::before, *::after {
+		box-sizing: border-box;
+	}
+
 	h3, form, label {
 		margin-top: 0;
 		margin-bottom: 16px;
@@ -108,9 +112,13 @@
 		flex-grow: 1;
 	}
 
+	input, button {
+		padding: 8px;
+		height: 36px;
+	}
+
 	input {
 		font-family: monospace;
-		padding: 8px;
 	}
 
 	.password {
@@ -122,10 +130,6 @@
 		width: -moz-available;
 		width: -webkit-fill-available;
 		width: fill-available;
-	}
-
-	button {
-		padding: 8px;
 	}
 
 	hr {
