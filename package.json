@@ -3,7 +3,8 @@
 	"name": "random-password-gen",
 	"scripts": {
 		"dev": "NODE_ENV=development node ./scripts/dev.js",
-		"build": "NODE_ENV=production node ./scripts/build.js"
+		"build": "NODE_ENV=production node ./scripts/build.js",
+		"publish": "(rsync -a --delete --filter='P .git' dist/ _pages/; cd _pages/; git add --all; git commit -m \"pages update: $(date -Iseconds)\" && git push origin pages)"
 	},
 	"dependencies": {
 		"@intrnl/velvet": "^0.1.22"
