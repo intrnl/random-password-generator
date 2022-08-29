@@ -1,5 +1,6 @@
 node_modules/
 /dist/_assets/
+.wireit/
 
 .npm-*.log
 .pnpm-*.log
@@ -7,3 +8,5 @@ node_modules/
 npm-*.log
 pnpm-*.log
 yarn-*.log
+
+netlifydd.json
