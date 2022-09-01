@@ -23,7 +23,7 @@
 			]
 		},
 		"publish": {
-			"command": "netlifydd deploy dist/",
+			"command": "scripts/publish.sh",
 			"dependencies": [
 				"build"
 			],
