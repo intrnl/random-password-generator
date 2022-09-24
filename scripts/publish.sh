@@ -6,6 +6,9 @@ if [[ -n $(git status --porcelain) ]]; then
 	exit 1
 fi
 
-GIT_BRANCH=$(git rev-parse --symbolic-full-name --abbrev-ref HEAD)
 GIT_COMMIT=$(git rev-parse HEAD)
-pnpm exec netlifydd deploy -m "${GIT_BRANCH} ${GIT_COMMIT}" dist/
+
+rsync -aHAX --delete --exclude=.git dist/ deploy/
+git -C deploy/ add .
+git -C deploy/ commit -m "deploy: ${GIT_COMMIT}"
+git -C deploy/ push
