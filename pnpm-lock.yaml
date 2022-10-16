@@ -4,6 +4,7 @@ specifiers:
   '@intrnl/esbuild-plugin-velvet': ^0.5.3
   '@intrnl/velvet': ^0.4.11
   '@intrnl/velvet-compiler': ^0.7.2
+  '@minify-html/node': ^0.10.2
   esbuild: ^0.15.9
 
 dependencies:
@@ -12,6 +13,7 @@ dependencies:
 devDependencies:
   '@intrnl/esbuild-plugin-velvet': 0.5.3_7h4pr6ljyl5igslokmfmoy357a
   '@intrnl/velvet-compiler': 0.7.2_@intrnl+velvet@0.4.11
+  '@minify-html/node': 0.10.2
   esbuild: 0.15.9
 
 packages:
@@ -71,6 +73,15 @@ packages:
     resolution: {integrity: sha512-1+lx7j99fdph+uy3EnjQyr39KQZ7LP56+aWOr6finJWpgYpvb7XrhFUqDwnEk/wpPC98nCjAT6RulpW3crWjlg==}
     dev: true
 
+  /@minify-html/node/0.10.2:
+    resolution: {integrity: sha512-nKeDOgyI/3oMvKQvNciwLmKyET7kQvQUc0R0mj9hRofjDjSfQHVTxkCDV+CFsFXS9NtWiEfkthE/ew+S6GK1Eg==}
+    engines: {node: '>= 8.6.0'}
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      cargo-cp-artifact: 0.1.6
+    dev: true
+
   /acorn/8.8.0:
     resolution: {integrity: sha512-QOxyigPVrpZ2GXT+PFyZTl6TtOFc5egxHIP9IlQ+RbupQuX4RkT/Bee4/kQuC02Xkzg84JcT7oLYtDIQxp+v7w==}
     engines: {node: '>=0.4.0'}
@@ -79,6 +90,11 @@ packages:
 
   /astring/1.8.3:
     resolution: {integrity: sha512-sRpyiNrx2dEYIMmUXprS8nlpRg2Drs8m9ElX9vVEXaCB4XEAJhKfs7IcX0IwShjuOAjLR6wzIrgoptz1n19i1A==}
+    hasBin: true
+    dev: true
+
+  /cargo-cp-artifact/0.1.6:
+    resolution: {integrity: sha512-CQw0doK/aaF7j041666XzuilHxqMxaKkn+I5vmBsd8SAwS0cO5CqVEVp0xJwOKstyqWZ6WK4Ww3O6p26x/Goyg==}
     hasBin: true
     dev: true
 
