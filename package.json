@@ -7,12 +7,12 @@
 		"publish": "rm -r dist/_assets; pnpm run build; scripts/publish.sh"
 	},
 	"dependencies": {
-		"@intrnl/velvet": "^0.4.11"
+		"@intrnl/velvet": "^0.4.22"
 	},
 	"devDependencies": {
-		"@intrnl/esbuild-plugin-velvet": "^0.5.3",
-		"@intrnl/velvet-compiler": "^0.7.2",
-		"@minify-html/node": "^0.10.2",
-		"esbuild": "^0.15.9"
+		"@intrnl/esbuild-plugin-velvet": "^0.5.4",
+		"@intrnl/velvet-compiler": "^0.7.14",
+		"@minify-html/node": "^0.10.7",
+		"esbuild": "^0.15.18"
 	}
 }
