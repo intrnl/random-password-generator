@@ -1,3 +1,8 @@
+const RAND_MAX = 0xFFFF_FFFF_FFFF;
+const RAND_CACHE = new Uint8Array(6 * 1024);
+
+let RAND_OFFSET  = RAND_CACHE.length;
+
 /**
  * @param {PasswordGenerationOptions} options
  * @returns {string}
@@ -100,35 +105,47 @@ function shuffle (array) {
 }
 
 /**
- * https://stackoverflow.com/a/41452318
  * @param {number} min
  * @param {number} max
  * @returns {number}
  */
 function randrange (min, max) {
 	const range = max - min;
-	const bytes = Math.ceil(Math.log2(range) / 8);
 
-	if (range <= 0 || !bytes) {
+	if (range <= 0) {
 		return min;
 	}
 
-	const maxn = 256 ** bytes;
-	const buf = new Uint8Array(bytes);
+	const limit = RAND_MAX - (RAND_MAX % range);
 
 	while (true) {
-		crypto.getRandomValues(buf);
-
-		let val = 0;
-
-		for (let idx = 0; idx < bytes; idx++) {
-			val = (val << 8) + buf[idx];
+		if (RAND_OFFSET === RAND_CACHE.length) {
+			crypto.getRandomValues(RAND_CACHE);
+			RAND_OFFSET = 0;
 		}
 
-		if (val < maxn - (maxn % range)) {
-			return min + (val % range);
+		const x = readUInt48BE(RAND_CACHE, RAND_OFFSET);
+		RAND_OFFSET += 6;
+
+		if (x < limit) {
+			return (x % range) + min;
 		}
 	}
+}
+
+/**
+ * @param {Uint8Array} buffer
+ * @param {number} offset
+ * @returns {number}
+ */
+function readUInt48BE (buffer, offset = 0) {
+	const first = buffer[offset];
+	const last = buffer[offset + 5];
+
+	return (
+		(first * 2 ** 8 + buffer[++offset]) * 2 ** 32 + buffer[++offset] * 2 ** 24 +
+		buffer[++offset] * 2 ** 16 + buffer[++offset] * 2 ** 8 + last
+	);
 }
 
 /**
