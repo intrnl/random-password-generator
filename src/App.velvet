@@ -40,7 +40,7 @@
 
 <form @submit={generate}>
 	<div class='password'>
-		<input readonly value={password} #ref={textfield} />
+		<input readonly .value={password} #ref={textfield} />
 		<button type=button @click={copy}>copy</button>
 		<button type=submit>generate</button>
 	</div>
