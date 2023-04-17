@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../src/style.css"],
-  "sourcesContent": [":root {\n\tcolor-scheme: light dark;\n}\n\nbody {\n\tfont-family: sans-serif;\n\tmax-width: 768px;\n\tdisplay: flex;\n\tflex-direction: column;\n\tmargin: 0 auto;\n\tpadding: 16px;\n}\n"],
-  "mappings": "AAAA,MACC,wBAGD,KACC,uBACA,gBACA,aACA,sBARD",
-  "names": []
-}
