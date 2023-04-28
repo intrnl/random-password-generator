@@ -12,6 +12,7 @@
 	},
 	"devDependencies": {
 		"dprint": "^0.36.0",
+		"terser": "^5.17.1",
 		"typescript": "^5.0.4",
 		"vite": "4.3.3",
 		"vite-plugin-solid": "^2.7.0"

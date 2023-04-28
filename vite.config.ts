@@ -6,6 +6,7 @@ export default defineConfig({
 	base: './',
 	plugins: [solid()],
 	build: {
+		minify: 'terser',
 		sourcemap: true,
 		target: 'esnext',
 		modulePreload: {
