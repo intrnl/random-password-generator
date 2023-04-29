@@ -1,4 +1,4 @@
-import { type Accessor, type Setter, createRenderEffect, createSignal } from 'solid-js';
+import { type Accessor, type Setter, batch, createEffect, createRenderEffect, createSignal } from 'solid-js';
 import { render } from 'solid-js/web';
 
 import { generatePassword } from './generator';
@@ -28,13 +28,29 @@ const modelChecked = (getter: Accessor<boolean>, setter: Setter<boolean>) => {
 	};
 };
 
+const STORAGE_KEY = 'randompass';
+
+const DEFAULTS = {
+	length: 16,
+	lowercase: 1,
+	uppercase: 1,
+	number: 1,
+	special: 1,
+	ambiguous: false,
+};
+
 const App = () => {
-	const [length, setLength] = createSignal(16);
-	const [lowercase, setLowercase] = createSignal(1);
-	const [uppercase, setUppercase] = createSignal(1);
-	const [number, setNumber] = createSignal(1);
-	const [special, setSpecial] = createSignal(1);
-	const [ambiguous, setAmbiguous] = createSignal(false);
+	const options: typeof DEFAULTS = {
+		...DEFAULTS,
+		...JSON.parse(localStorage.getItem(STORAGE_KEY)!),
+	};
+
+	const [length, setLength] = createSignal(options.length);
+	const [lowercase, setLowercase] = createSignal(options.lowercase);
+	const [uppercase, setUppercase] = createSignal(options.uppercase);
+	const [number, setNumber] = createSignal(options.number);
+	const [special, setSpecial] = createSignal(options.special);
+	const [ambiguous, setAmbiguous] = createSignal(options.ambiguous);
 
 	const [password, setPassword] = createSignal('');
 
@@ -59,6 +75,29 @@ const App = () => {
 		input!.select();
 		document.execCommand('copy');
 	};
+
+	const reset = () => {
+		batch(() => {
+			setLength(DEFAULTS.length);
+			setLowercase(DEFAULTS.lowercase);
+			setUppercase(DEFAULTS.uppercase);
+			setSpecial(DEFAULTS.special);
+			setAmbiguous(DEFAULTS.ambiguous);
+		});
+	};
+
+	createEffect(() => {
+		const persist: typeof DEFAULTS = {
+			length: length(),
+			lowercase: lowercase(),
+			uppercase: uppercase(),
+			number: number(),
+			special: special(),
+			ambiguous: ambiguous(),
+		};
+
+		localStorage.setItem(STORAGE_KEY, JSON.stringify(persist));
+	});
 
 	generate();
 
@@ -110,11 +149,15 @@ const App = () => {
 
 			<hr />
 
-			<p>
+			<div class='footer'>
 				<a target='_blank' href='https://codeberg.org/intrnl/random-password-generator'>
 					source code
 				</a>
-			</p>
+
+				<button type='button' onClick={reset}>
+					reset
+				</button>
+			</div>
 		</form>
 	);
 };

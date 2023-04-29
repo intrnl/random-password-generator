@@ -69,3 +69,10 @@ a {
 a:hover {
 	text-decoration: underline;
 }
+
+.footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+}
