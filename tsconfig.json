@@ -5,7 +5,7 @@
 		"target": "ESNext",
 		"module": "ESNext",
 		"verbatimModuleSyntax": true,
-		"moduleResolution": "node",
+		"moduleResolution": "bundler",
 		"jsxImportSource": "solid-js",
 		"jsx": "preserve",
 		"strict": true,
