@@ -1,7 +1,7 @@
 import { type Accessor, type Setter, batch, createEffect, createRenderEffect, createSignal } from 'solid-js';
 import { render } from 'solid-js/web';
 
-import { generatePassword } from './generator';
+import { generatePassword } from './generator.ts';
 import './style.css';
 
 const modelNumber = (getter: Accessor<number>, setter: Setter<number>) => {
