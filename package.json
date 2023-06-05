@@ -8,13 +8,13 @@
 		"publish": "pnpm run build; scripts/publish.sh"
 	},
 	"dependencies": {
-		"solid-js": "^1.7.5"
+		"solid-js": "^1.7.6"
 	},
 	"devDependencies": {
-		"dprint": "^0.36.1",
-		"terser": "^5.17.3",
-		"typescript": "^5.0.4",
-		"vite": "^4.3.5",
+		"dprint": "^0.37.1",
+		"terser": "^5.17.7",
+		"typescript": "^5.1.3",
+		"vite": "^4.3.9",
 		"vite-plugin-solid": "^2.7.0"
 	}
 }
