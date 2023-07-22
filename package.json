@@ -4,7 +4,7 @@
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",
-		"publish": "pnpm run build; scripts/publish.sh"
+		"publish": "bun run build; scripts/publish.sh"
 	},
 	"dependencies": {
 		"solid-js": "^1.7.8"
