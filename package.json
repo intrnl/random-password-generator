@@ -7,13 +7,13 @@
 		"publish": "bun run build; scripts/publish.sh"
 	},
 	"dependencies": {
-		"solid-js": "^1.7.8"
+		"solid-js": "^1.7.12"
 	},
 	"devDependencies": {
-		"dprint": "^0.39.1",
-		"terser": "^5.19.2",
-		"typescript": "^5.1.6",
-		"vite": "^4.4.6",
+		"dprint": "^0.41.0",
+		"terser": "^5.19.4",
+		"typescript": "^5.2.2",
+		"vite": "^4.4.9",
 		"vite-plugin-solid": "^2.7.0"
 	}
 }
