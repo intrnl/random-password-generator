@@ -61,14 +61,16 @@ const App = () => {
 			ev.preventDefault();
 		}
 
-		setPassword(generatePassword({
-			length: length(),
-			lowercase: lowercase(),
-			uppercase: uppercase(),
-			number: number(),
-			special: special(),
-			ambiguous: ambiguous(),
-		}));
+		setPassword(
+			generatePassword({
+				length: length(),
+				lowercase: lowercase(),
+				uppercase: uppercase(),
+				number: number(),
+				special: special(),
+				ambiguous: ambiguous(),
+			}),
+		);
 	};
 
 	const copy = () => {
@@ -105,56 +107,54 @@ const App = () => {
 		<form onSubmit={generate}>
 			<h3>random password generator</h3>
 
-			<div class='password'>
+			<div class="password">
 				<input ref={input} readonly value={password()} />
-				<button type='button' onClick={copy}>
+				<button type="button" onClick={copy}>
 					copy
 				</button>
-				<button type='submit'>
-					generate
-				</button>
+				<button type="submit">generate</button>
 			</div>
 
 			<hr />
 
 			<label>
 				<span>length</span>
-				<input required type='number' min='1' ref={modelNumber(length, setLength)} />
+				<input required type="number" min="1" ref={modelNumber(length, setLength)} />
 			</label>
 
 			<label>
 				<span>lowercase</span>
-				<input required type='number' min='-1' ref={modelNumber(lowercase, setLowercase)} />
+				<input required type="number" min="-1" ref={modelNumber(lowercase, setLowercase)} />
 			</label>
 
 			<label>
 				<span>uppercase</span>
-				<input required type='number' min='-1' ref={modelNumber(uppercase, setUppercase)} />
+				<input required type="number" min="-1" ref={modelNumber(uppercase, setUppercase)} />
 			</label>
 
 			<label>
 				<span>number</span>
-				<input required type='number' min='-1' ref={modelNumber(number, setNumber)} />
+				<input required type="number" min="-1" ref={modelNumber(number, setNumber)} />
 			</label>
 
 			<label>
 				<span>special</span>
-				<input required type='number' min='-1' ref={modelNumber(special, setSpecial)} />
+				<input required type="number" min="-1" ref={modelNumber(special, setSpecial)} />
 			</label>
 
 			<label>
 				<span>ambiguous</span>
-				<input type='checkbox' ref={modelChecked(ambiguous, setAmbiguous)} />
+				<input type="checkbox" ref={modelChecked(ambiguous, setAmbiguous)} />
 			</label>
 
 			<hr />
 
-			<div class='footer'>
-				<a target='_blank' href='https://codeberg.org/intrnl/random-password-generator'>
+			<div class="footer">
+				<a target="_blank" href="https://codeberg.org/intrnl/random-password-generator">
 					source code
 				</a>
 
-				<button type='button' onClick={reset}>
+				<button type="button" onClick={reset}>
 					reset
 				</button>
 			</div>

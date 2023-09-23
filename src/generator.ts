@@ -1,4 +1,4 @@
-const RAND_MAX = 0xFFFF_FFFF_FFFF;
+const RAND_MAX = 0xffff_ffff_ffff;
 const RAND_CACHE = new Uint8Array(6 * 1024);
 
 let RAND_OFFSET = RAND_CACHE.length;

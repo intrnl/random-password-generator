@@ -1,4 +1,6 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
 	box-sizing: border-box;
 }
 
@@ -15,12 +17,15 @@ body {
 	padding: 16px;
 }
 
-h3, form, label {
+h3,
+form,
+label {
 	margin-top: 0;
 	margin-bottom: 16px;
 }
 
-h3, form {
+h3,
+form {
 	display: block;
 }
 
@@ -36,7 +41,8 @@ label > span {
 	flex-grow: 1;
 }
 
-input, button {
+input,
+button {
 	padding: 8px;
 	height: 36px;
 }
