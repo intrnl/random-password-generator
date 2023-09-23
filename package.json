@@ -4,13 +4,14 @@
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",
-		"publish": "pnpm run build; scripts/publish.sh"
+		"publish": "pnpm run build; scripts/publish.sh",
+		"fmt": "prettier --cache --write ."
 	},
 	"dependencies": {
 		"solid-js": "^1.7.12"
 	},
 	"devDependencies": {
-		"dprint": "^0.41.0",
+		"prettier": "^3.0.3",
 		"terser": "^5.19.4",
 		"typescript": "^5.2.2",
 		"vite": "^4.4.9",

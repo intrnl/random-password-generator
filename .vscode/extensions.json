@@ -1,5 +1,5 @@
 {
 	"recommendations": [
-		"dprint.dprint"
+		"esbenp.prettier-vscode"
 	]
 }
